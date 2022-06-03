@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.*;
-
+/*
 public class FilmManagerTest {
     Film first = new Film(1, "one", "one");
     Film second = new Film(2, "two", "two");
@@ -240,3 +240,5 @@ public class FilmManagerTest {
 
 
 }
+*/
+
