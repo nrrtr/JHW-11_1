@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class FilmRepo {
     private Film[] films = new Film[0];
-    private int filmLimit = 10;
+    //private int filmLimit = 10;
 
     public Film[] findAll() {
         return getFilms();
@@ -39,14 +39,14 @@ public class FilmRepo {
         return res;
     }
 
-    public void removeById(int value) {
+    public void removeById(int valueOfId) {
         if (films.length != 0) {
             Film[] tmp = new Film[films.length - 1];
-            int tmpIndx = 0;
+            int tmpIndex = 0;
             for (int i = 0; i < films.length; i++) {
-                if (films[i].getId() != value) {
-                    tmp[tmpIndx] = films[i];
-                    tmpIndx++;
+                if (films[i].getId() != valueOfId) {
+                    tmp[tmpIndex] = films[i];
+                    tmpIndex++;
                 }
             }
             films = tmp;
