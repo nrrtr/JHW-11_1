@@ -45,7 +45,9 @@ public class FilmManagerTest {
         FilmManager flm = new FilmManager();
         Film[] expected = {};
         Assertions.assertArrayEquals(expected, flm.findAll());
-    }@Test
+    }
+
+    @Test
     void shouldFindBlankResultWithCustomConstr() {
         FilmManager flm = new FilmManager(5);
         Film[] expected = {};
@@ -60,4 +62,153 @@ public class FilmManagerTest {
         Film[] er = {first};
         Assertions.assertArrayEquals(er, fm.findAll());
     }
+
+    @Test
+    void shouldFindLessThenLimitWithCustomConstr() {
+        FilmManager fm = new FilmManager(15);
+        fm.addFilm(first);
+
+        Film[] er = {first};
+        Assertions.assertArrayEquals(er, fm.findAll());
+    }
+
+    @Test
+    void shouldFindAllLimitedByDefConstr() {
+        FilmManager fm = new FilmManager();
+        fm.addFilm(first);
+        fm.addFilm(second);
+        fm.addFilm(third);
+        fm.addFilm(fourth);
+        fm.addFilm(fifth);
+        fm.addFilm(sixth);
+        fm.addFilm(seventh);
+        fm.addFilm(eighth);
+        fm.addFilm(ninth);
+        fm.addFilm(tenth);
+
+        Film[] er = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth};
+        Assertions.assertArrayEquals(er, fm.findAll());
+    }
+
+    @Test
+    void shouldFindAllLimitedByCustomConstr() {
+        FilmManager fm = new FilmManager(17);
+        fm.addFilm(first);
+        fm.addFilm(second);
+        fm.addFilm(third);
+        fm.addFilm(fourth);
+        fm.addFilm(fifth);
+        fm.addFilm(sixth);
+        fm.addFilm(seventh);
+        fm.addFilm(eighth);
+        fm.addFilm(ninth);
+        fm.addFilm(tenth);
+        fm.addFilm(eleventh);
+        fm.addFilm(twelfth);
+        fm.addFilm(thirteenth);
+        fm.addFilm(fourteenth);
+        fm.addFilm(fifteenth);
+        fm.addFilm(sixteenth);
+        fm.addFilm(seventeenth);
+
+
+        Film[] er = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, sixteenth, seventeenth};
+        Assertions.assertArrayEquals(er, fm.findAll());
+    }
+
+    @Test
+    void shouldFindAllOverLimitedByDefConstr() {
+        FilmManager fm = new FilmManager();
+        fm.addFilm(first);
+        fm.addFilm(second);
+        fm.addFilm(third);
+        fm.addFilm(fourth);
+        fm.addFilm(fifth);
+        fm.addFilm(sixth);
+        fm.addFilm(seventh);
+        fm.addFilm(eighth);
+        fm.addFilm(ninth);
+        fm.addFilm(tenth);
+        fm.addFilm(eleventh);
+
+        Film[] er = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh};
+        Assertions.assertArrayEquals(er, fm.findAll());
+    }
+
+    @Test
+    void shouldFindAllOverLimitedByCustomConstr() {
+        FilmManager fm = new FilmManager(4);
+        fm.addFilm(first);
+        fm.addFilm(second);
+        fm.addFilm(third);
+        fm.addFilm(fourth);
+        fm.addFilm(fifth);
+        fm.addFilm(sixth);
+        fm.addFilm(seventh);
+
+        Film[] er = {first, second, third, fourth, fifth, sixth, seventh};
+        Assertions.assertArrayEquals(er, fm.findAll());
+    }
+
+    /* @Test
+    void shoulFindLastBlanWithDefConstr() {
+        FilmManager fm = new FilmManager();
+        Film[] er = {};
+        Assertions.assertArrayEquals(er, fm.findLast());
+    }
+    */
+
+    @Test
+    void shouldFindLastOfDefaultConstructorStack() {
+        FilmManager manager = new FilmManager();
+        manager.addFilm(first);
+        manager.addFilm(second);
+        manager.addFilm(third);
+        manager.addFilm(fourth);
+        manager.addFilm(fifth);
+        manager.addFilm(sixth);
+        manager.addFilm(seventh);
+        manager.addFilm(eighth);
+        manager.addFilm(ninth);
+        manager.addFilm(tenth);
+
+        Film[] expected = {tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        Assertions.assertArrayEquals(expected, manager.findLast());
+    }
+
+    @Test
+    void shouldFindLastOfCustomConstructorStack() {
+        FilmManager manager = new FilmManager(7);
+        manager.addFilm(first);
+        manager.addFilm(second);
+        manager.addFilm(third);
+        manager.addFilm(fourth);
+        manager.addFilm(fifth);
+        manager.addFilm(sixth);
+        manager.addFilm(seventh);
+
+        Film[] expected = {seventh, sixth, fifth, fourth, third, second, first};
+        Assertions.assertArrayEquals(expected, manager.findLast());
+    }
+
+    @Test
+    void shouldFindOnlyTenLastItemsWithCustomConstructor() {
+        FilmManager fm = new FilmManager(5);
+        fm.addFilm(first);
+        fm.addFilm(second);
+        fm.addFilm(third);
+        fm.addFilm(fourth);
+        fm.addFilm(fifth);
+        fm.addFilm(sixth);
+        fm.addFilm(seventh);
+        fm.addFilm(eighth);
+        fm.addFilm(ninth);
+        fm.addFilm(tenth);
+        fm.addFilm(eleventh);
+
+        Film[] er = {eleventh, tenth, ninth, eighth, seventh};
+        Assertions.assertArrayEquals(er, fm.findLast());
+    }
+
+
 }
